@@ -1,0 +1,6 @@
+<html>
+  <body>
+    <h1> BLOG </h1>
+    <%= @body %>
+  </body>
+</html>
