@@ -5,7 +5,7 @@ defmodule Static.MixProject do
     [
       app: :static,
       version: "0.1.0",
-      elixir: "~> 1.8",
+      elixir: "~> 1.9",
       deps: deps()
     ]
   end
