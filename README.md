@@ -11,7 +11,7 @@ This is a personal website generator that has both highly and weakly held opinon
   - If you have a file in there it should be html or markdown as EEX Templates `.html.eex` or `.md.eex`.
   - If you want a static page feel free to put in the top level directory ofr `./templates`
   - All layouts will go into `./templates/layouts` and contain a  `<%= @body %>` element for where you want the page to go.
-- All Blog Posts should live in `./templates/posts` and be html or markdown EEX templates and will be deployed to `./_deploy/blog/`
+- All Blog Posts should live in `./templates/blog` and be html or markdown EEX templates and will be deployed to `./_deploy/blog/`
 - Every page and post may contain a front matter section
   - Format: `key=val\n`
   - Seperated from the rest of the document with `\n!!!\n`
