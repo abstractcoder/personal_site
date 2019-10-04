@@ -12,7 +12,7 @@ defmodule Mix.Tasks.Serve do
   end
 
   plug(Plug.Logger)
-  plug(Plug.Static, at: "/", from: Path.expand("./static"), only: ["css"])
+  plug(Plug.Static, at: "/static", from: Path.expand("./static"))
   plug(__MODULE__.CompileAndServe)
 
   defmodule CompileAndServe do
