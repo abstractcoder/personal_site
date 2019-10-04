@@ -1,6 +1,6 @@
 [Settings]
   ID = "cc9fe224-7f23-439f-8762-b8d426a0f065"
 
-[Build]
-  Publish = "_deploy"
+[build]
+  publish = "_deploy"
   Functions = ""
