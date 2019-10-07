@@ -5,7 +5,12 @@ defmodule Static do
   def compile_file(filename, bindings \\ []) do
     contents = File.read!(filename)
     config = Application.get_all_env(:personal_site)
-    bindings = Keyword.merge(config, bindings)
+
+    bindings = 
+      config
+      |> Keyword.merge(bindings)
+      |> Keyword.put(:posts, get_posts())
+
 
     parts = String.split(contents, "\n!!!\n")
     name = Path.basename(filename, ".eex")
@@ -48,6 +53,27 @@ defmodule Static do
     else
       {"templates/layouts/default.html.eex", body, bindings}
     end
+  end
+
+  def list_posts() do
+    Path.wildcard("./templates/blog/*.{html,md}.eex")
+  end
+
+  def get_posts() do
+    list_posts()
+    |> Enum.map(fn(post) ->
+      content = File.read!(post)
+      %Post{
+        slug: post |> Path.rootname() |> Path.rootname() |> Path.basename(),
+        path: post,
+        bindings: get_front_matter(content)
+      }
+    end)
+  end
+
+  def get_front_matter(content) do
+    [fm | _ ] = String.split(content, "\n!!!\n")
+    parse_front_matter(fm)
   end
 
   def parse_front_matter(string) do
