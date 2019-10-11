@@ -40,5 +40,15 @@ defmodule Mix.Tasks.Deploy do
 
     File.cp_r!("./static", "_deploy/static")
     IO.puts("Copied ./static to _deploy/static")
+
+    if System.find_executable("cleancss") do
+      Path.wildcard("_deploy/**/*.css")
+      |> Enum.map(fn path ->
+        IO.puts("Optimizing css for #{path}")
+        System.cmd("cleancss", ["-o", path, path])
+      end)
+    else
+      IO.warn("Cleancss is not installed, css won't be optimized")
+    end
   end
 end

@@ -30,6 +30,17 @@
   </p>
 </section>
 <section>
+  <h2>Newsletter</h2>
+  <p>
+    <iframe width="480" height="320" src="https://peregrine.substack.com/embed" frameborder="0" scrolling="no"></iframe>
+    <label for="sn-nl" class="margin-toggle">&#8853;</label>
+    <input type="checkbox" id="sn-nl" class="margin-toggle"/>
+    <span class="marginnote">
+      I post links, thoughts and stories I found interesting. Kinda like a blog I don't need to update.
+    </span>
+  </p>
+</section>
+<section>
   <h2>Where to find me.</h2>
   <p>Check out <a target="_blank" href="https://github.com/jeregrine">my code related projects</a>, follow me on <a target="_blank" href="https://twitter.com/peregrine">twitter</a> or <a target="_blank" rel="me" href="https://merveilles.town/@peregrine">the fediverse</a>. I am also open to old fashioned emails at <a target="_blank" href="mailto:jason@rokkincat.com">jason@rokkincat.com</a>.
   </p>
