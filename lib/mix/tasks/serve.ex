@@ -30,11 +30,12 @@ defmodule Mix.Tasks.Serve do
             {"templates/index.html.eex", []}
 
           ["blog", path] ->
-            path = Path.basename(path)
+            path = Path.basename(path, ".html")
             [file_name] = Path.wildcard("templates/blog/#{path}.{md,html}.eex")
             {file_name, [layout: "blog"]}
 
           [path] ->
+            path = Path.basename(path, ".html")
             case Path.wildcard("templates/#{path}.{md,html}.eex") do
               [file_name] ->
                 {file_name, []}
