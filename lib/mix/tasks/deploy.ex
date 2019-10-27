@@ -15,7 +15,7 @@ defmodule Mix.Tasks.Deploy do
     for file <- files do
       doc = Static.compile_file(file)
 
-      file_name =
+      dir_name =
         file
         # Remove both extensions
         |> Path.rootname(".md.eex")
@@ -25,15 +25,19 @@ defmodule Mix.Tasks.Deploy do
         |> tl()
         |> Path.join()
 
-      # Make Folders
-      file_name
-      |> Path.split()
-      |> Enum.drop(-1)
-      |> Enum.map(fn path ->
-        File.mkdir_p!(Path.join(["_deploy", path]))
-      end)
+      # Root Page should exist in root directory
+      dir_name =
+        case dir_name do
+          "index" -> ""
+          _ -> dir_name
+        end
 
-      final_name = "_deploy/" <> file_name <> ".html"
+      # Make Folder
+      final_dir_name = Path.join(["_deploy", dir_name])
+      File.mkdir_p!(final_dir_name)
+
+      # Make File
+      final_name = Path.join([final_dir_name, "index.html"])
       File.write!(final_name, doc)
       IO.puts("#{file} -> #{final_name}")
     end
